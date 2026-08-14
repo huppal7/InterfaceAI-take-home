@@ -1,0 +1,90 @@
+{
+  "capabilityId": "member.open_sub_account",
+  "capabilityVersion": "1.0.0",
+  "status": "business_outcome",
+  "outcome": {
+    "code": "VALIDATION_ERROR",
+    "message": "Input failed validation (initial deposit must be a non-negative number)."
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the console.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.515Z",
+      "durationMs": 21
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.536Z",
+      "durationMs": 8,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.544Z",
+      "durationMs": 42,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s4",
+      "index": 3,
+      "action": "click",
+      "description": "Open the new sub-account form.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.586Z",
+      "durationMs": 35,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s5",
+      "index": 4,
+      "action": "select",
+      "description": "Choose the account type.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.622Z",
+      "durationMs": 6,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s6",
+      "index": 5,
+      "action": "type",
+      "description": "Enter the initial deposit.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.629Z",
+      "durationMs": 6,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s7",
+      "index": 6,
+      "action": "click",
+      "description": "Open the sub-account (irreversible: creates a record).",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:07.635Z",
+      "durationMs": 42,
+      "resolvedStrategy": 0,
+      "note": "business outcome: VALIDATION_ERROR"
+    }
+  ],
+  "evidence": {
+    "runId": "replay-member-open-sub-account-2026-08-14T21-41-07-294Z",
+    "logPath": "evidence/replay-member-open-sub-account-2026-08-14T21-41-07-294Z/events.jsonl",
+    "dir": "evidence/replay-member-open-sub-account-2026-08-14T21-41-07-294Z",
+    "screenshots": []
+  },
+  "startedAt": "2026-08-14T21:41:07.294Z",
+  "finishedAt": "2026-08-14T21:41:07.677Z",
+  "durationMs": 383
+}

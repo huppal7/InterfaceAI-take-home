@@ -1,0 +1,14 @@
+{
+  "id": "replay-member-open-sub-account-2026-08-14T21-41-05-966Z--s7",
+  "runId": "replay-member-open-sub-account-2026-08-14T21-41-05-966Z",
+  "capabilityId": "member.open_sub_account",
+  "goal": "Open a new sub-account for this member and reach the confirmation screen.",
+  "reason": "risky_confirmation",
+  "stepId": "s7",
+  "stepIndex": 6,
+  "currentUrl": "http://localhost:4599/members/10001/sub-account/new",
+  "observationText": "Account type | Holiday SavingsEmergency FundCertificate (CD)\nInitial deposit\nOpen sub-account · Cancel",
+  "screenshot": "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/009-escalation-s7.png",
+  "message": "Risky/irreversible step requires confirmation: \"Open the sub-account (irreversible: creates a record).\".",
+  "createdAt": "2026-08-14T21:41:06.323Z"
+}

@@ -1,0 +1,50 @@
+{
+  "capabilityId": "member.read_savings_balance",
+  "capabilityVersion": "1.0.0",
+  "status": "business_outcome",
+  "outcome": {
+    "code": "NO_SUCH_MEMBER",
+    "message": "No member exists for the supplied member ID."
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the member-servicing console.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:04.974Z",
+      "durationMs": 21
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID into the lookup field.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:04.995Z",
+      "durationMs": 7,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the member lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:05.003Z",
+      "durationMs": 40,
+      "resolvedStrategy": 0,
+      "note": "business outcome: NO_SUCH_MEMBER"
+    }
+  ],
+  "evidence": {
+    "runId": "replay-member-read-savings-balance-2026-08-14T21-41-04-746Z",
+    "logPath": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-04-746Z/events.jsonl",
+    "dir": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-04-746Z",
+    "screenshots": []
+  },
+  "startedAt": "2026-08-14T21:41:04.745Z",
+  "finishedAt": "2026-08-14T21:41:05.043Z",
+  "durationMs": 297
+}

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "member.read_savings_balance",
+  "version": "1.0.0",
+  "name": "Read member savings balance",
+  "description": "Look up a member by ID and return their current savings balance.",
+  "app": {
+    "vendor": "Meridian",
+    "product": "MemberServicing",
+    "appVersion": "8.2",
+    "surface": "legacy-web"
+  },
+  "tenant": {
+    "mode": "base"
+  },
+  "entry": {
+    "urlTemplate": "{baseUrl}/console"
+  },
+  "inputs": [
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "description": "Member identifier to look up.",
+      "sensitive": false,
+      "example": "12345"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savingsBalance",
+      "type": "money",
+      "description": "Current savings balance in USD.",
+      "capturedByStep": "s4",
+      "sensitive": false
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the member-servicing console.",
+      "risk": "safe",
+      "value": {
+        "kind": "literal",
+        "value": "{baseUrl}/console"
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      },
+      "checkpoint": {
+        "type": "textPresent",
+        "text": "Member Lookup"
+      }
+    },
+    {
+      "id": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID into the lookup field.",
+      "risk": "safe",
+      "target": {
+        "description": "Member ID lookup field",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "label",
+            "value": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "value": "#mid"
+          }
+        ],
+        "robustnessNote": "Accessibility role+name is primary; label and id are fallbacks."
+      },
+      "value": {
+        "kind": "param",
+        "param": "memberId"
+      }
+    },
+    {
+      "id": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the member lookup.",
+      "risk": "safe",
+      "target": {
+        "description": "Search button",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Search",
+            "exact": false
+          },
+          {
+            "kind": "text",
+            "value": "Search",
+            "exact": false
+          }
+        ]
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      },
+      "checkpoint": {
+        "type": "textPresent",
+        "text": "Savings Balance"
+      }
+    },
+    {
+      "id": "s4",
+      "index": 3,
+      "action": "read",
+      "description": "Read the savings balance from the member record.",
+      "risk": "safe",
+      "target": {
+        "description": "Savings balance value",
+        "strategies": [
+          {
+            "kind": "css",
+            "value": "#savings"
+          }
+        ],
+        "robustnessNote": "Author-assigned id on the balance element; stable in this vendor product."
+      },
+      "capture": {
+        "output": "savingsBalance",
+        "from": "text",
+        "normalize": "money"
+      }
+    }
+  ],
+  "successCondition": {
+    "type": "textPresent",
+    "text": "Savings Balance"
+  },
+  "runtimeRules": [
+    {
+      "name": "record_not_found",
+      "description": "Member ID does not resolve to a record.",
+      "when": {
+        "type": "textPresent",
+        "text": "No member found"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "NO_SUCH_MEMBER",
+      "message": "No member exists for the supplied member ID."
+    },
+    {
+      "name": "permission_denied",
+      "description": "Operator lacks rights to view/act on this record.",
+      "when": {
+        "type": "textPresent",
+        "text": "restricted"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "PERMISSION_DENIED",
+      "message": "Access to this member record is restricted; additional authorization is required."
+    },
+    {
+      "name": "validation_error",
+      "description": "A field failed server-side validation.",
+      "when": {
+        "type": "textPresent",
+        "text": "must be a non-negative number"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "VALIDATION_ERROR",
+      "message": "Input failed validation (initial deposit must be a non-negative number)."
+    },
+    {
+      "name": "unexpected_interstitial",
+      "description": "An unexpected System Notice modal is blocking the flow.",
+      "when": {
+        "type": "elementVisible",
+        "locator": {
+          "description": "System Notice modal",
+          "strategies": [
+            {
+              "kind": "role",
+              "role": "dialog",
+              "name": "System Notice",
+              "exact": false
+            }
+          ]
+        }
+      },
+      "classify": "recoverable",
+      "recovery": {
+        "kind": "dismissDialog"
+      },
+      "message": "Dismissed an unexpected System Notice interstitial and continued."
+    },
+    {
+      "name": "session_timeout",
+      "description": "Session expired; app redirected to sign-in.",
+      "when": {
+        "type": "textPresent",
+        "text": "session has timed out"
+      },
+      "classify": "hard_failure",
+      "message": "Session expired mid-flow. Re-authentication is required before this capability can complete."
+    },
+    {
+      "name": "app_error",
+      "description": "The application returned an unexpected system error.",
+      "when": {
+        "type": "textPresent",
+        "text": "unexpected system error"
+      },
+      "classify": "hard_failure",
+      "message": "The application returned an unexpected system error (500). Aborting."
+    }
+  ],
+  "metadata": {
+    "recordedAt": "2026-08-14T21:25:55.920Z",
+    "recordedBy": "hand-authored",
+    "goal": "Look up member 12345 and read their current savings balance.",
+    "approval": "approved",
+    "notes": "Reference artifact used for offline replay/tests. Structurally identical to a discovered one."
+  }
+}

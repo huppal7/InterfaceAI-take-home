@@ -1,0 +1,59 @@
+{
+  "capabilityId": "member.read_savings_balance",
+  "capabilityVersion": "1.0.0",
+  "status": "success",
+  "outputs": {
+    "savingsBalance": 8742.19
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the member-servicing console.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:03.702Z",
+      "durationMs": 23
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID into the lookup field.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:03.745Z",
+      "durationMs": 9,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the member lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:03.755Z",
+      "durationMs": 41,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s4",
+      "index": 3,
+      "action": "read",
+      "description": "Read the savings balance from the member record.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:03.796Z",
+      "durationMs": 5
+    }
+  ],
+  "evidence": {
+    "runId": "replay-member-read-savings-balance-2026-08-14T21-41-03-484Z",
+    "logPath": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z/events.jsonl",
+    "dir": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z",
+    "screenshots": [
+      "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z/007-final.png"
+    ]
+  },
+  "startedAt": "2026-08-14T21:41:03.483Z",
+  "finishedAt": "2026-08-14T21:41:03.820Z",
+  "durationMs": 337
+}

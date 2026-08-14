@@ -1,0 +1,376 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "member.open_sub_account",
+  "version": "1.0.0",
+  "name": "Open a new member sub-account",
+  "description": "Open a new sub-account for a member and reach the confirmation screen.",
+  "app": {
+    "vendor": "Meridian",
+    "product": "MemberServicing",
+    "appVersion": "8.2",
+    "surface": "legacy-web"
+  },
+  "tenant": {
+    "mode": "base"
+  },
+  "entry": {
+    "urlTemplate": "{baseUrl}/console"
+  },
+  "inputs": [
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "description": "Member identifier.",
+      "sensitive": false,
+      "example": "10001"
+    },
+    {
+      "name": "accountType",
+      "type": "enum",
+      "required": true,
+      "description": "Type of sub-account to open.",
+      "enumValues": [
+        "Holiday Savings",
+        "Emergency Fund",
+        "Certificate (CD)"
+      ],
+      "sensitive": false,
+      "example": "Holiday Savings"
+    },
+    {
+      "name": "initialDeposit",
+      "type": "money",
+      "required": true,
+      "description": "Opening deposit amount.",
+      "sensitive": false,
+      "example": "100.00"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "confirmationNumber",
+      "type": "string",
+      "description": "Sub-account confirmation number.",
+      "capturedByStep": "s8",
+      "sensitive": false
+    }
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the console.",
+      "risk": "safe",
+      "value": {
+        "kind": "literal",
+        "value": "{baseUrl}/console"
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      },
+      "checkpoint": {
+        "type": "textPresent",
+        "text": "Member Lookup"
+      }
+    },
+    {
+      "id": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID.",
+      "risk": "safe",
+      "target": {
+        "description": "Member ID lookup field",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "label",
+            "value": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "value": "#mid"
+          }
+        ]
+      },
+      "value": {
+        "kind": "param",
+        "param": "memberId"
+      }
+    },
+    {
+      "id": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the lookup.",
+      "risk": "safe",
+      "target": {
+        "description": "Search button",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Search",
+            "exact": false
+          },
+          {
+            "kind": "text",
+            "value": "Search",
+            "exact": false
+          }
+        ]
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      },
+      "checkpoint": {
+        "type": "textPresent",
+        "text": "Savings Balance"
+      }
+    },
+    {
+      "id": "s4",
+      "index": 3,
+      "action": "click",
+      "description": "Open the new sub-account form.",
+      "risk": "safe",
+      "target": {
+        "description": "Open new sub-account link",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "link",
+            "name": "Open new sub-account",
+            "exact": false
+          },
+          {
+            "kind": "text",
+            "value": "Open new sub-account",
+            "exact": false
+          }
+        ]
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      },
+      "checkpoint": {
+        "type": "textPresent",
+        "text": "Opening a new sub-account"
+      }
+    },
+    {
+      "id": "s5",
+      "index": 4,
+      "action": "select",
+      "description": "Choose the account type.",
+      "risk": "safe",
+      "target": {
+        "description": "Account type dropdown",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "combobox",
+            "name": "Account type",
+            "exact": false
+          },
+          {
+            "kind": "label",
+            "value": "Account type",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "value": "#atype"
+          }
+        ]
+      },
+      "value": {
+        "kind": "param",
+        "param": "accountType"
+      }
+    },
+    {
+      "id": "s6",
+      "index": 5,
+      "action": "type",
+      "description": "Enter the initial deposit.",
+      "risk": "safe",
+      "target": {
+        "description": "Initial deposit field",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": "Initial deposit",
+            "exact": false
+          },
+          {
+            "kind": "label",
+            "value": "Initial deposit",
+            "exact": false
+          },
+          {
+            "kind": "placeholder",
+            "value": "0.00"
+          },
+          {
+            "kind": "css",
+            "value": "#dep"
+          }
+        ]
+      },
+      "value": {
+        "kind": "param",
+        "param": "initialDeposit"
+      }
+    },
+    {
+      "id": "s7",
+      "index": 6,
+      "action": "click",
+      "description": "Open the sub-account (irreversible: creates a record).",
+      "risk": "risky",
+      "target": {
+        "description": "Open sub-account submit button",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Open sub-account",
+            "exact": false
+          },
+          {
+            "kind": "text",
+            "value": "Open sub-account",
+            "exact": false
+          }
+        ]
+      },
+      "wait": {
+        "until": "load",
+        "timeoutMs": 10000
+      }
+    },
+    {
+      "id": "s8",
+      "index": 7,
+      "action": "read",
+      "description": "Read the confirmation number.",
+      "risk": "safe",
+      "target": {
+        "description": "Confirmation number",
+        "strategies": [
+          {
+            "kind": "css",
+            "value": "#confno"
+          }
+        ]
+      },
+      "capture": {
+        "output": "confirmationNumber",
+        "from": "text",
+        "normalize": "trim"
+      }
+    }
+  ],
+  "successCondition": {
+    "type": "textPresent",
+    "text": "Sub-account opened"
+  },
+  "runtimeRules": [
+    {
+      "name": "record_not_found",
+      "description": "Member ID does not resolve to a record.",
+      "when": {
+        "type": "textPresent",
+        "text": "No member found"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "NO_SUCH_MEMBER",
+      "message": "No member exists for the supplied member ID."
+    },
+    {
+      "name": "permission_denied",
+      "description": "Operator lacks rights to view/act on this record.",
+      "when": {
+        "type": "textPresent",
+        "text": "restricted"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "PERMISSION_DENIED",
+      "message": "Access to this member record is restricted; additional authorization is required."
+    },
+    {
+      "name": "validation_error",
+      "description": "A field failed server-side validation.",
+      "when": {
+        "type": "textPresent",
+        "text": "must be a non-negative number"
+      },
+      "classify": "business_outcome",
+      "outcomeCode": "VALIDATION_ERROR",
+      "message": "Input failed validation (initial deposit must be a non-negative number)."
+    },
+    {
+      "name": "unexpected_interstitial",
+      "description": "An unexpected System Notice modal is blocking the flow.",
+      "when": {
+        "type": "elementVisible",
+        "locator": {
+          "description": "System Notice modal",
+          "strategies": [
+            {
+              "kind": "role",
+              "role": "dialog",
+              "name": "System Notice",
+              "exact": false
+            }
+          ]
+        }
+      },
+      "classify": "recoverable",
+      "recovery": {
+        "kind": "dismissDialog"
+      },
+      "message": "Dismissed an unexpected System Notice interstitial and continued."
+    },
+    {
+      "name": "session_timeout",
+      "description": "Session expired; app redirected to sign-in.",
+      "when": {
+        "type": "textPresent",
+        "text": "session has timed out"
+      },
+      "classify": "hard_failure",
+      "message": "Session expired mid-flow. Re-authentication is required before this capability can complete."
+    },
+    {
+      "name": "app_error",
+      "description": "The application returned an unexpected system error.",
+      "when": {
+        "type": "textPresent",
+        "text": "unexpected system error"
+      },
+      "classify": "hard_failure",
+      "message": "The application returned an unexpected system error (500). Aborting."
+    }
+  ],
+  "metadata": {
+    "recordedAt": "2026-08-14T21:25:55.922Z",
+    "recordedBy": "hand-authored",
+    "goal": "Open a new sub-account for this member and reach the confirmation screen.",
+    "approval": "approved",
+    "notes": "Reference artifact used for offline replay/tests. Structurally identical to a discovered one."
+  }
+}

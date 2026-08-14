@@ -1,0 +1,100 @@
+{
+  "capabilityId": "member.open_sub_account",
+  "capabilityVersion": "1.0.0",
+  "status": "success",
+  "outputs": {
+    "confirmationNumber": "SA-10001-01"
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the console.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.181Z",
+      "durationMs": 20
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.201Z",
+      "durationMs": 8,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.209Z",
+      "durationMs": 45,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s4",
+      "index": 3,
+      "action": "click",
+      "description": "Open the new sub-account form.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.254Z",
+      "durationMs": 35,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s5",
+      "index": 4,
+      "action": "select",
+      "description": "Choose the account type.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.289Z",
+      "durationMs": 7,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s6",
+      "index": 5,
+      "action": "type",
+      "description": "Enter the initial deposit.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.299Z",
+      "durationMs": 6,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s7",
+      "index": 6,
+      "action": "click",
+      "description": "Open the sub-account (irreversible: creates a record).",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.305Z",
+      "durationMs": 55,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s8",
+      "index": 7,
+      "action": "read",
+      "description": "Read the confirmation number.",
+      "status": "ok",
+      "startedAt": "2026-08-14T21:41:06.360Z",
+      "durationMs": 5
+    }
+  ],
+  "evidence": {
+    "runId": "replay-member-open-sub-account-2026-08-14T21-41-05-966Z",
+    "logPath": "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/events.jsonl",
+    "dir": "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z",
+    "screenshots": [
+      "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/009-escalation-s7.png",
+      "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/017-final.png"
+    ]
+  },
+  "startedAt": "2026-08-14T21:41:05.965Z",
+  "finishedAt": "2026-08-14T21:41:06.377Z",
+  "durationMs": 411
+}
