@@ -26,9 +26,9 @@ npm run seed                         # write the reference capability artifacts
 ```
 
 Config / keys:
-- **`ANTHROPIC_API_KEY`** — required **only** for the optional discovery run (the one LLM
-  step). Replay, error handling, escalation, safety, the catalog, and tests all run
-  **without any key**.
+- **`ANTHROPIC_API_KEY`** — required **only** to re-run discovery. A genuine LLM discovery
+  transcript is already in `evidence/discovery-look-up-member-12345-and-read-their-curr-2026-08-18T04-46-23-802Z`.
+  Replay, error handling, escalation, safety, the catalog, and tests all run **without any key**.
 - Optional: `AGENT_MODEL` (default `claude-opus-5`), `APP_PORT` (default `4599`),
   `OPERATOR_PORT` (default `4600`).
 
@@ -74,9 +74,10 @@ npm test        # unit + e2e replay (spawns its own app; no LLM)
 
 ---
 
-## Optional: genuine LLM discovery
+## Optional: re-run genuine LLM discovery
 
-This is the one step that needs a model API key. It is isolated from everything else.
+A captured live run is already in `/evidence`. Re-running this step needs a model API key
+and is isolated from everything else. Do not commit the key.
 
 ```bash
 # Terminal A

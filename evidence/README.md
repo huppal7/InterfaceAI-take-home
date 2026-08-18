@@ -32,10 +32,14 @@ grep -E 'risky|escalation|control|business_outcome|runtime_rule' evidence/replay
 Select-String -Path evidence/replay-risky-approved/events.jsonl -Pattern 'risky|escalation|control|business_outcome|runtime_rule'
 ```
 
-## Still to capture: the real LLM discovery run
+## Discovery run (real LLM)
 
-The assignment requires one genuine LLM-driven run against the live surface. The loop is
-implemented; it needs an `ANTHROPIC_API_KEY`:
+`discovery-look-up-member-12345-and-read-their-curr-2026-08-18T04-46-23-802Z` — Claude
+drove the live mock console to look up member `12345`, read the savings balance, and
+saved `member.read_savings_balance@1.0.0` (`recordedBy: llm-discovery`). Observation
+screenshots the model saw are in that folder (`002-obs-0.png` … `009-obs-3.png`).
+
+To reproduce (requires `ANTHROPIC_API_KEY`; do not commit the key):
 
 ```bash
 npm run app

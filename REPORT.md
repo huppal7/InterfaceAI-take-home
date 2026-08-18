@@ -217,10 +217,6 @@ Deliberately stubbed at clean seams (all documented, none load-bearing):
   time.
 - **Assisted single-step LLM fallback on replay failure** — the escalation path covers the
   human case; a bounded, policy-checked LLM recovery is a natural next stretch.
-- **Genuine LLM discovery evidence** — the agent loop, tools, recorder, and CLI are
-  complete (`npm run discover`). Capturing a live transcript requires an `ANTHROPIC_API_KEY`
-  this environment does not have. Replay/error-handling/escalation/safety are proven
-  offline, and discovery refuses to start without the key rather than faking a run.
 
 **What I'd build next:** (1) the tenant-override resolver + canonicalization so one base
 artifact drives many tenants; (2) multi-run stability scoring feeding the `approval` gate;
