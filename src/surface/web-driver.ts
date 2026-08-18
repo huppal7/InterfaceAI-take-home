@@ -239,7 +239,15 @@ export class WebDriver implements SurfaceDriver {
     switch (cp.type) {
       case "urlMatches": {
         const url = page.url();
-        return { ok: new RegExp(cp.pattern).test(url), observed: url };
+        let pathAndQuery = url;
+        try {
+          const u = new URL(url);
+          pathAndQuery = `${u.pathname}${u.search}`;
+        } catch {
+          /* keep full url */
+        }
+        const re = new RegExp(cp.pattern);
+        return { ok: re.test(pathAndQuery) || re.test(url), observed: url };
       }
       case "textPresent": {
         if (cp.within) {
