@@ -146,6 +146,5 @@ app.post("/members/:id/sub-account", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`[mock-app] MeridianCore console on http://localhost:${PORT}`);
 });

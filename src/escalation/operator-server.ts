@@ -91,6 +91,5 @@ function escapeHtml(s: string): string {
 }
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`[operator] console on http://localhost:${PORT} (watching ${ROOT})`);
 });

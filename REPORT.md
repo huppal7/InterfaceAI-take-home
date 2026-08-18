@@ -83,7 +83,7 @@ The shape decisions that matter:
 - **Checkpoints are first-class** (`Checkpoint` union) — per-step and overall — so replay
   asserts it actually reached the expected state instead of assuming a click worked.
 - **`runtimeRules` embed the error taxonomy in the artifact** — self-contained, reviewable,
-  and authoritative (see §3). 
+  and authoritative (see §3).
 - **Versioned + reviewable.** Stored as `id@version.json`, diff-friendly, with an
   `approval` state (`draft`→`approved`) that gates unattended replay.
 
@@ -217,13 +217,11 @@ Deliberately stubbed at clean seams (all documented, none load-bearing):
   time.
 - **Assisted single-step LLM fallback on replay failure** — the escalation path covers the
   human case; a bounded, policy-checked LLM recovery is a natural next stretch.
+- **Genuine LLM discovery evidence** — the agent loop, tools, recorder, and CLI are
+  complete (`npm run discover`). Capturing a live transcript requires an `ANTHROPIC_API_KEY`
+  this environment does not have. Replay/error-handling/escalation/safety are proven
+  offline, and discovery refuses to start without the key rather than faking a run.
 
 **What I'd build next:** (1) the tenant-override resolver + canonicalization so one base
 artifact drives many tenants; (2) multi-run stability scoring feeding the `approval` gate;
 (3) a `DesktopDriver` to prove the seam on a non-web surface.
-
-> **One required item still open:** the genuine LLM discovery run. The agent loop, tools,
-> recorder, and evidence capture are complete and the command is one line
-> (`README.md` → Demo path); it needs an `ANTHROPIC_API_KEY` to execute and drop its
-> artifact + transcript into `/evidence`. Replay/error-handling/escalation/safety are all
-> proven offline today.

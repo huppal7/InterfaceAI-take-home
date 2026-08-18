@@ -141,3 +141,22 @@ describe("CLI args", () => {
     expect(p.flags["base-url"]).toBe("http://localhost:4599");
   });
 });
+
+describe("discovery gate", () => {
+  it("refuses to start without ANTHROPIC_API_KEY", async () => {
+    const prev = process.env.ANTHROPIC_API_KEY;
+    delete process.env.ANTHROPIC_API_KEY;
+    try {
+      const { discover } = await import("../src/agent/loop.js");
+      await expect(
+        discover({
+          goal: "look up member 12345",
+          baseUrl: "http://localhost:4599",
+          app: { vendor: "Meridian", product: "MemberServicing", surface: "legacy-web" },
+        })
+      ).rejects.toThrow(/ANTHROPIC_API_KEY/);
+    } finally {
+      if (prev !== undefined) process.env.ANTHROPIC_API_KEY = prev;
+    }
+  });
+});

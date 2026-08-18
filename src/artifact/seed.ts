@@ -130,6 +130,5 @@ const openSub: CapabilityArtifact = parseArtifact({
 
 for (const a of [readBalance, openSub]) {
   const path = saveArtifact(a);
-  // eslint-disable-next-line no-console
   console.log(`seeded ${a.id}@${a.version} -> ${path}`);
 }
