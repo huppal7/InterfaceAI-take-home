@@ -14,6 +14,8 @@
     "discover": "tsx src/cli/discover.ts",
     "replay": "tsx src/cli/replay.ts",
     "catalog": "tsx src/cli/catalog.ts",
+    "seed": "tsx src/artifact/seed.ts",
+    "capture-evidence": "tsx src/cli/capture-evidence.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },

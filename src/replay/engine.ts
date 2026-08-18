@@ -40,6 +40,10 @@ export interface ReplayOptions {
   slowMo?: number;
   /** Provide a driver (tests); otherwise a WebDriver is created. */
   driver?: SurfaceDriver;
+  /** Evidence directory root. Tests write under a gitignored folder. */
+  evidenceRoot?: string;
+  /** Stable run-id (folder name) for curated evidence capture. */
+  evidenceRunId?: string;
 }
 
 interface ValidatedInputs {
@@ -117,7 +121,7 @@ export async function replay(
   const operatorId = opts.operatorId ?? process.env.OPERATOR_ID ?? "agent1";
   const sensitive = [...validation.sensitiveValues, operatorId];
 
-  const run = new RunContext("replay", `${artifact.id}`, sensitive);
+  const run = new RunContext("replay", `${artifact.id}`, sensitive, opts.evidenceRoot ?? "evidence", opts.evidenceRunId);
   run.log("info", "replay.start", { capabilityId: artifact.id, version: artifact.version, params: redactParamsForLog(artifact.inputs, rawParams) });
 
   const steps: StepTrace[] = [];

@@ -11,7 +11,7 @@ import { saveArtifact } from "./store.js";
 
 const APP = { vendor: "Meridian", product: "MemberServicing", appVersion: "8.2", surface: "legacy-web" as const };
 const TENANT = { mode: "base" as const };
-const nowMeta = (id: string, goal: string) => ({
+const nowMeta = (goal: string) => ({
   recordedAt: new Date().toISOString(),
   recordedBy: "hand-authored" as const,
   goal,
@@ -70,7 +70,7 @@ const readBalance: CapabilityArtifact = parseArtifact({
   ],
   successCondition: { type: "textPresent", text: "Savings Balance" },
   runtimeRules: rulesForProduct(APP.vendor, APP.product),
-  metadata: { ...nowMeta("member.read_savings_balance", "Look up member 12345 and read their current savings balance."), model: undefined },
+  metadata: { ...nowMeta("Look up member 12345 and read their current savings balance.") },
 });
 
 const openSub: CapabilityArtifact = parseArtifact({
@@ -125,7 +125,7 @@ const openSub: CapabilityArtifact = parseArtifact({
   ],
   successCondition: { type: "textPresent", text: "Sub-account opened" },
   runtimeRules: rulesForProduct(APP.vendor, APP.product),
-  metadata: nowMeta("member.open_sub_account", "Open a new sub-account for this member and reach the confirmation screen."),
+  metadata: nowMeta("Open a new sub-account for this member and reach the confirmation screen."),
 });
 
 for (const a of [readBalance, openSub]) {

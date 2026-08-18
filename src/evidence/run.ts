@@ -21,10 +21,16 @@ export class RunContext {
   readonly screenshots: string[] = [];
   private seq = 0;
 
-  constructor(kind: "discovery" | "replay" | "escalation", label: string, private sensitiveValues: string[] = [], root = "evidence") {
+  constructor(
+    kind: "discovery" | "replay" | "escalation",
+    label: string,
+    private sensitiveValues: string[] = [],
+    root = "evidence",
+    runId?: string
+  ) {
     const stamp = new Date().toISOString().replace(/[:.]/g, "-");
     const slug = label.replace(/[^a-z0-9]+/gi, "-").slice(0, 40).toLowerCase();
-    this.runId = `${kind}-${slug}-${stamp}`;
+    this.runId = runId ?? `${kind}-${slug}-${stamp}`;
     this.dir = join(root, this.runId);
     mkdirSync(this.dir, { recursive: true });
     this.logPath = join(this.dir, "events.jsonl");

@@ -5,6 +5,9 @@ import { synthesizeLocator, synthesizeReadLocator } from "../src/artifact/locato
 import { validateInputs } from "../src/replay/engine.js";
 import { parseArtifact } from "../src/types/artifact.js";
 import { loadArtifact } from "../src/artifact/store.js";
+import { list, toToolSchema } from "../src/catalog/catalog.js";
+import { SessionController } from "../src/escalation/controller.js";
+import { parseArgs } from "../src/cli/args.js";
 import type { ElementDescriptor } from "../src/surface/types.js";
 
 describe("redaction", () => {
@@ -31,6 +34,7 @@ describe("allowlist policy", () => {
   });
   it("gates action types", () => {
     expect(checkAction(DEFAULT_POLICY, "click").allowed).toBe(true);
+    expect(checkAction({ ...DEFAULT_POLICY, allowedActions: ["click"] }, "type").allowed).toBe(false);
   });
   it("disposes risky steps by mode", () => {
     expect(disposeRiskyStep({ ...DEFAULT_POLICY, riskyStepMode: "block" }, false)).toBe("blocked");
@@ -88,5 +92,52 @@ describe("artifact schema", () => {
     expect(() => parseArtifact(a)).not.toThrow();
     expect(a.steps.length).toBeGreaterThan(0);
     expect(a.runtimeRules.some((r) => r.classify === "business_outcome")).toBe(true);
+  });
+});
+
+describe("capability catalog", () => {
+  it("lists saved capabilities with typed signatures", () => {
+    const caps = list();
+    expect(caps.map((c) => c.id)).toEqual(expect.arrayContaining(["member.read_savings_balance", "member.open_sub_account"]));
+    const read = caps.find((c) => c.id === "member.read_savings_balance")!;
+    expect(read.inputs).toEqual([{ name: "memberId", type: "string", required: true }]);
+    expect(read.hasRiskyStep).toBe(false);
+    expect(caps.find((c) => c.id === "member.open_sub_account")?.hasRiskyStep).toBe(true);
+  });
+
+  it("emits a JSON tool/function schema a calling agent could invoke", () => {
+    const schema = toToolSchema(loadArtifact("member.read_savings_balance"));
+    expect(schema.name).toBe("member_read_savings_balance");
+    expect(schema.input_schema).toMatchObject({
+      type: "object",
+      required: ["memberId"],
+      properties: { memberId: { type: "string" } },
+    });
+  });
+});
+
+describe("session control transfer", () => {
+  it("blocks automation from acting while a human holds the session", () => {
+    const seen: string[] = [];
+    const c = new SessionController((who) => seen.push(who));
+    expect(c.who()).toBe("agent");
+    c.assertAgentControls();
+    c.cedeToHuman();
+    expect(c.who()).toBe("human");
+    expect(() => c.assertAgentControls()).toThrow(/human holds control/);
+    c.reclaim();
+    expect(c.who()).toBe("agent");
+    c.assertAgentControls();
+    expect(seen).toEqual(["human", "agent"]);
+  });
+});
+
+describe("CLI args", () => {
+  it("parses repeatable --input flags and boolean switches", () => {
+    const p = parseArgs(["member.read_savings_balance", "--input", "memberId=12345", "--headed", "--base-url", "http://localhost:4599"]);
+    expect(p.positionals).toEqual(["member.read_savings_balance"]);
+    expect(p.inputs).toEqual({ memberId: "12345" });
+    expect(p.flags.headed).toBe(true);
+    expect(p.flags["base-url"]).toBe("http://localhost:4599");
   });
 });
