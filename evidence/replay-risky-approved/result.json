@@ -12,8 +12,8 @@
       "action": "navigate",
       "description": "Open the console.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.181Z",
-      "durationMs": 20
+      "startedAt": "2026-08-18T03:50:05.552Z",
+      "durationMs": 84
     },
     {
       "stepId": "s2",
@@ -21,8 +21,8 @@
       "action": "type",
       "description": "Enter the Member ID.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.201Z",
-      "durationMs": 8,
+      "startedAt": "2026-08-18T03:50:05.636Z",
+      "durationMs": 31,
       "resolvedStrategy": 0
     },
     {
@@ -31,8 +31,8 @@
       "action": "click",
       "description": "Submit the lookup.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.209Z",
-      "durationMs": 45,
+      "startedAt": "2026-08-18T03:50:05.668Z",
+      "durationMs": 128,
       "resolvedStrategy": 0
     },
     {
@@ -41,8 +41,8 @@
       "action": "click",
       "description": "Open the new sub-account form.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.254Z",
-      "durationMs": 35,
+      "startedAt": "2026-08-18T03:50:05.797Z",
+      "durationMs": 94,
       "resolvedStrategy": 0
     },
     {
@@ -51,8 +51,8 @@
       "action": "select",
       "description": "Choose the account type.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.289Z",
-      "durationMs": 7,
+      "startedAt": "2026-08-18T03:50:05.892Z",
+      "durationMs": 22,
       "resolvedStrategy": 0
     },
     {
@@ -61,8 +61,8 @@
       "action": "type",
       "description": "Enter the initial deposit.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.299Z",
-      "durationMs": 6,
+      "startedAt": "2026-08-18T03:50:05.915Z",
+      "durationMs": 23,
       "resolvedStrategy": 0
     },
     {
@@ -71,8 +71,8 @@
       "action": "click",
       "description": "Open the sub-account (irreversible: creates a record).",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.305Z",
-      "durationMs": 55,
+      "startedAt": "2026-08-18T03:50:05.938Z",
+      "durationMs": 167,
       "resolvedStrategy": 0
     },
     {
@@ -81,20 +81,20 @@
       "action": "read",
       "description": "Read the confirmation number.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:06.360Z",
-      "durationMs": 5
+      "startedAt": "2026-08-18T03:50:06.106Z",
+      "durationMs": 20
     }
   ],
   "evidence": {
-    "runId": "replay-member-open-sub-account-2026-08-14T21-41-05-966Z",
-    "logPath": "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/events.jsonl",
-    "dir": "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z",
+    "runId": "replay-risky-approved",
+    "logPath": "evidence/replay-risky-approved/events.jsonl",
+    "dir": "evidence/replay-risky-approved",
     "screenshots": [
-      "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/009-escalation-s7.png",
-      "evidence/replay-member-open-sub-account-2026-08-14T21-41-05-966Z/017-final.png"
+      "evidence/replay-risky-approved/009-escalation-s7.png",
+      "evidence/replay-risky-approved/017-final.png"
     ]
   },
-  "startedAt": "2026-08-14T21:41:05.965Z",
-  "finishedAt": "2026-08-14T21:41:06.377Z",
-  "durationMs": 411
+  "startedAt": "2026-08-18T03:50:05.132Z",
+  "finishedAt": "2026-08-18T03:50:06.167Z",
+  "durationMs": 1035
 }

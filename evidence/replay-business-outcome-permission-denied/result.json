@@ -1,0 +1,53 @@
+{
+  "capabilityId": "member.read_savings_balance",
+  "capabilityVersion": "1.0.0",
+  "status": "business_outcome",
+  "outcome": {
+    "code": "PERMISSION_DENIED",
+    "message": "Access to this member record is restricted; additional authorization is required."
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the member-servicing console.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:04.811Z",
+      "durationMs": 65
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID into the lookup field.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:04.876Z",
+      "durationMs": 26,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the member lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:04.902Z",
+      "durationMs": 116,
+      "resolvedStrategy": 0,
+      "note": "business outcome: PERMISSION_DENIED",
+      "screenshot": "evidence/replay-business-outcome-permission-denied/005-outcome-permission-denied.png"
+    }
+  ],
+  "evidence": {
+    "runId": "replay-business-outcome-permission-denied",
+    "logPath": "evidence/replay-business-outcome-permission-denied/events.jsonl",
+    "dir": "evidence/replay-business-outcome-permission-denied",
+    "screenshots": [
+      "evidence/replay-business-outcome-permission-denied/005-outcome-permission-denied.png"
+    ]
+  },
+  "startedAt": "2026-08-18T03:50:04.342Z",
+  "finishedAt": "2026-08-18T03:50:05.064Z",
+  "durationMs": 722
+}

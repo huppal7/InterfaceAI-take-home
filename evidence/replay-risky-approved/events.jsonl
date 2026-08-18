@@ -1,0 +1,18 @@
+{"ts":"2026-08-18T03:50:05.133Z","seq":0,"level":"info","event":"replay.start","capabilityId":"member.open_sub_account","version":"1.0.0","params":{"memberId":"10001","accountType":"Holiday Savings","initialDeposit":"250"}}
+{"ts":"2026-08-18T03:50:05.551Z","seq":1,"level":"info","event":"session.established","operator":"[REDACTED]"}
+{"ts":"2026-08-18T03:50:05.636Z","seq":2,"level":"info","event":"step.ok","stepId":"s1","action":"navigate"}
+{"ts":"2026-08-18T03:50:05.667Z","seq":3,"level":"info","event":"step.ok","stepId":"s2","action":"type","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:05.796Z","seq":4,"level":"info","event":"step.ok","stepId":"s3","action":"click","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:05.891Z","seq":5,"level":"info","event":"step.ok","stepId":"s4","action":"click","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:05.914Z","seq":6,"level":"info","event":"step.ok","stepId":"s5","action":"select","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:05.938Z","seq":7,"level":"info","event":"step.ok","stepId":"s6","action":"type","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:05.938Z","seq":8,"level":"decision","event":"risky_step","stepId":"s7","disposition":"needs_confirmation","description":"Open the sub-account (irreversible: creates a record)."}
+{"ts":"2026-08-18T03:50:05.997Z","seq":9,"level":"decision","event":"escalation.raised","reason":"risky_confirmation","stepId":"s7","message":"Risky/irreversible step requires confirmation: \"Open the sub-account (irreversible: creates a record).\"."}
+{"ts":"2026-08-18T03:50:06.002Z","seq":10,"level":"info","event":"control.transfer","controller":"human"}
+{"ts":"2026-08-18T03:50:06.003Z","seq":11,"level":"info","event":"control.transfer","controller":"agent"}
+{"ts":"2026-08-18T03:50:06.004Z","seq":12,"level":"decision","event":"escalation.resolved","decision":"approve","note":"auto-approved (curated evidence)","humanActions":[]}
+{"ts":"2026-08-18T03:50:06.005Z","seq":13,"level":"decision","event":"risky_step.decision","stepId":"s7","decision":"approve","note":"auto-approved (curated evidence)"}
+{"ts":"2026-08-18T03:50:06.105Z","seq":14,"level":"info","event":"step.ok","stepId":"s7","action":"click","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:06.111Z","seq":15,"level":"info","event":"output.captured","name":"confirmationNumber"}
+{"ts":"2026-08-18T03:50:06.126Z","seq":16,"level":"info","event":"step.ok","stepId":"s8","action":"read"}
+{"ts":"2026-08-18T03:50:06.167Z","seq":17,"level":"info","event":"replay.finish","status":"success"}

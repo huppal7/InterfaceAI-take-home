@@ -46,6 +46,10 @@ export interface DiscoverResult {
 const RISKY_VERB = /\b(open|submit|confirm|create|post|transfer|delete|pay|approve|remove)\b/i;
 
 export async function discover(opts: DiscoverOptions): Promise<DiscoverResult> {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    throw new Error("ANTHROPIC_API_KEY is required for the discovery run (this is the one step that must use a real LLM).");
+  }
+
   const model = opts.model ?? process.env.AGENT_MODEL ?? "claude-opus-5";
   const maxSteps = opts.maxSteps ?? 16;
   const policy = opts.policy ?? policyForBaseUrl(opts.baseUrl);
@@ -53,9 +57,6 @@ export async function discover(opts: DiscoverOptions): Promise<DiscoverResult> {
   const run = new RunContext("discovery", opts.goal, [operatorId]);
   run.log("info", "discovery.start", { goal: opts.goal, model, baseUrl: opts.baseUrl });
 
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error("ANTHROPIC_API_KEY is required for the discovery run (this is the one step that must use a real LLM).");
-  }
   const client = new Anthropic();
   const driver: SurfaceDriver = new WebDriver({ headless: opts.headless ?? true });
   const controller = new SessionController((c) => run.log("info", "control.transfer", { controller: c }));

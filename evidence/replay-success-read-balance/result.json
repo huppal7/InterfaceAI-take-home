@@ -12,8 +12,8 @@
       "action": "navigate",
       "description": "Open the member-servicing console.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:03.702Z",
-      "durationMs": 23
+      "startedAt": "2026-08-18T03:50:03.571Z",
+      "durationMs": 54
     },
     {
       "stepId": "s2",
@@ -21,8 +21,8 @@
       "action": "type",
       "description": "Enter the Member ID into the lookup field.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:03.745Z",
-      "durationMs": 9,
+      "startedAt": "2026-08-18T03:50:03.625Z",
+      "durationMs": 17,
       "resolvedStrategy": 0
     },
     {
@@ -31,8 +31,8 @@
       "action": "click",
       "description": "Submit the member lookup.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:03.755Z",
-      "durationMs": 41,
+      "startedAt": "2026-08-18T03:50:03.642Z",
+      "durationMs": 101,
       "resolvedStrategy": 0
     },
     {
@@ -41,19 +41,19 @@
       "action": "read",
       "description": "Read the savings balance from the member record.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:03.796Z",
-      "durationMs": 5
+      "startedAt": "2026-08-18T03:50:03.745Z",
+      "durationMs": 12
     }
   ],
   "evidence": {
-    "runId": "replay-member-read-savings-balance-2026-08-14T21-41-03-484Z",
-    "logPath": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z/events.jsonl",
-    "dir": "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z",
+    "runId": "replay-success-read-balance",
+    "logPath": "evidence/replay-success-read-balance/events.jsonl",
+    "dir": "evidence/replay-success-read-balance",
     "screenshots": [
-      "evidence/replay-member-read-savings-balance-2026-08-14T21-41-03-484Z/007-final.png"
+      "evidence/replay-success-read-balance/007-final.png"
     ]
   },
-  "startedAt": "2026-08-14T21:41:03.483Z",
-  "finishedAt": "2026-08-14T21:41:03.820Z",
-  "durationMs": 337
+  "startedAt": "2026-08-18T03:50:03.259Z",
+  "finishedAt": "2026-08-18T03:50:03.785Z",
+  "durationMs": 526
 }

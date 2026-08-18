@@ -13,8 +13,8 @@
       "action": "navigate",
       "description": "Open the console.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.515Z",
-      "durationMs": 21
+      "startedAt": "2026-08-18T03:50:06.535Z",
+      "durationMs": 61
     },
     {
       "stepId": "s2",
@@ -22,8 +22,8 @@
       "action": "type",
       "description": "Enter the Member ID.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.536Z",
-      "durationMs": 8,
+      "startedAt": "2026-08-18T03:50:06.597Z",
+      "durationMs": 21,
       "resolvedStrategy": 0
     },
     {
@@ -32,8 +32,8 @@
       "action": "click",
       "description": "Submit the lookup.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.544Z",
-      "durationMs": 42,
+      "startedAt": "2026-08-18T03:50:06.618Z",
+      "durationMs": 102,
       "resolvedStrategy": 0
     },
     {
@@ -42,8 +42,8 @@
       "action": "click",
       "description": "Open the new sub-account form.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.586Z",
-      "durationMs": 35,
+      "startedAt": "2026-08-18T03:50:06.722Z",
+      "durationMs": 70,
       "resolvedStrategy": 0
     },
     {
@@ -52,8 +52,8 @@
       "action": "select",
       "description": "Choose the account type.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.622Z",
-      "durationMs": 6,
+      "startedAt": "2026-08-18T03:50:06.793Z",
+      "durationMs": 17,
       "resolvedStrategy": 0
     },
     {
@@ -62,8 +62,8 @@
       "action": "type",
       "description": "Enter the initial deposit.",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.629Z",
-      "durationMs": 6,
+      "startedAt": "2026-08-18T03:50:06.811Z",
+      "durationMs": 21,
       "resolvedStrategy": 0
     },
     {
@@ -72,19 +72,22 @@
       "action": "click",
       "description": "Open the sub-account (irreversible: creates a record).",
       "status": "ok",
-      "startedAt": "2026-08-14T21:41:07.635Z",
-      "durationMs": 42,
+      "startedAt": "2026-08-18T03:50:06.832Z",
+      "durationMs": 93,
       "resolvedStrategy": 0,
-      "note": "business outcome: VALIDATION_ERROR"
+      "note": "business outcome: VALIDATION_ERROR",
+      "screenshot": "evidence/replay-validation-error/010-outcome-validation-error.png"
     }
   ],
   "evidence": {
-    "runId": "replay-member-open-sub-account-2026-08-14T21-41-07-294Z",
-    "logPath": "evidence/replay-member-open-sub-account-2026-08-14T21-41-07-294Z/events.jsonl",
-    "dir": "evidence/replay-member-open-sub-account-2026-08-14T21-41-07-294Z",
-    "screenshots": []
+    "runId": "replay-validation-error",
+    "logPath": "evidence/replay-validation-error/events.jsonl",
+    "dir": "evidence/replay-validation-error",
+    "screenshots": [
+      "evidence/replay-validation-error/010-outcome-validation-error.png"
+    ]
   },
-  "startedAt": "2026-08-14T21:41:07.294Z",
-  "finishedAt": "2026-08-14T21:41:07.677Z",
-  "durationMs": 383
+  "startedAt": "2026-08-18T03:50:06.214Z",
+  "finishedAt": "2026-08-18T03:50:06.958Z",
+  "durationMs": 744
 }

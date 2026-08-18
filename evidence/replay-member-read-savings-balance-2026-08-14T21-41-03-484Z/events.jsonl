@@ -1,8 +1,0 @@
-{"ts":"2026-08-14T21:41:03.484Z","seq":0,"level":"info","event":"replay.start","capabilityId":"member.read_savings_balance","version":"1.0.0","params":{"memberId":"12345"}}
-{"ts":"2026-08-14T21:41:03.698Z","seq":1,"level":"info","event":"session.established","operator":"[REDACTED]"}
-{"ts":"2026-08-14T21:41:03.725Z","seq":2,"level":"info","event":"step.ok","stepId":"s1","action":"navigate"}
-{"ts":"2026-08-14T21:41:03.754Z","seq":3,"level":"info","event":"step.ok","stepId":"s2","action":"type","resolvedStrategy":0}
-{"ts":"2026-08-14T21:41:03.796Z","seq":4,"level":"info","event":"step.ok","stepId":"s3","action":"click","resolvedStrategy":0}
-{"ts":"2026-08-14T21:41:03.798Z","seq":5,"level":"info","event":"output.captured","name":"savingsBalance"}
-{"ts":"2026-08-14T21:41:03.801Z","seq":6,"level":"info","event":"step.ok","stepId":"s4","action":"read"}
-{"ts":"2026-08-14T21:41:03.821Z","seq":7,"level":"info","event":"replay.finish","status":"success"}

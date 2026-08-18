@@ -12,6 +12,10 @@ import { mkdirSync, appendFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { scrub, redactValues } from "../safety/redaction.js";
 
+function posix(p: string): string {
+  return p.split("\\").join("/");
+}
+
 export type LogLevel = "info" | "warn" | "error" | "decision";
 
 export class RunContext {
@@ -31,9 +35,9 @@ export class RunContext {
     const stamp = new Date().toISOString().replace(/[:.]/g, "-");
     const slug = label.replace(/[^a-z0-9]+/gi, "-").slice(0, 40).toLowerCase();
     this.runId = runId ?? `${kind}-${slug}-${stamp}`;
-    this.dir = join(root, this.runId);
+    this.dir = posix(join(root, this.runId));
     mkdirSync(this.dir, { recursive: true });
-    this.logPath = join(this.dir, "events.jsonl");
+    this.logPath = posix(join(this.dir, "events.jsonl"));
   }
 
   setSensitive(values: string[]) {
@@ -66,7 +70,7 @@ export class RunContext {
   /** Path for a labeled screenshot; caller writes the actual file via the driver. */
   screenshotPath(label: string): string {
     const name = `${String(this.seq).padStart(3, "0")}-${label.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}.png`;
-    const p = join(this.dir, name);
+    const p = posix(join(this.dir, name));
     this.screenshots.push(p);
     return p;
   }

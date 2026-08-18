@@ -1,0 +1,60 @@
+{
+  "capabilityId": "member.read_savings_balance",
+  "capabilityVersion": "1.0.0",
+  "status": "success",
+  "outputs": {
+    "savingsBalance": 8742.19
+  },
+  "steps": [
+    {
+      "stepId": "s1",
+      "index": 0,
+      "action": "navigate",
+      "description": "Open the member-servicing console.",
+      "status": "recovered",
+      "startedAt": "2026-08-18T03:50:07.369Z",
+      "durationMs": 167,
+      "note": "recovered: unexpected_interstitial"
+    },
+    {
+      "stepId": "s2",
+      "index": 1,
+      "action": "type",
+      "description": "Enter the Member ID into the lookup field.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:07.537Z",
+      "durationMs": 26,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s3",
+      "index": 2,
+      "action": "click",
+      "description": "Submit the member lookup.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:07.563Z",
+      "durationMs": 123,
+      "resolvedStrategy": 0
+    },
+    {
+      "stepId": "s4",
+      "index": 3,
+      "action": "read",
+      "description": "Read the savings balance from the member record.",
+      "status": "ok",
+      "startedAt": "2026-08-18T03:50:07.687Z",
+      "durationMs": 24
+    }
+  ],
+  "evidence": {
+    "runId": "replay-recoverable-interstitial",
+    "logPath": "evidence/replay-recoverable-interstitial/events.jsonl",
+    "dir": "evidence/replay-recoverable-interstitial",
+    "screenshots": [
+      "evidence/replay-recoverable-interstitial/010-final.png"
+    ]
+  },
+  "startedAt": "2026-08-18T03:50:07.004Z",
+  "finishedAt": "2026-08-18T03:50:07.753Z",
+  "durationMs": 749
+}

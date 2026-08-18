@@ -1,0 +1,11 @@
+{"ts":"2026-08-18T03:50:07.004Z","seq":0,"level":"info","event":"replay.start","capabilityId":"member.read_savings_balance","version":"1.0.0","params":{"memberId":"12345"}}
+{"ts":"2026-08-18T03:50:07.368Z","seq":1,"level":"info","event":"session.established","operator":"[REDACTED]"}
+{"ts":"2026-08-18T03:50:07.429Z","seq":2,"level":"info","event":"runtime_rule.fired","rule":"unexpected_interstitial","classify":"recoverable"}
+{"ts":"2026-08-18T03:50:07.496Z","seq":3,"level":"info","event":"recovery.dismissDialog","ok":true}
+{"ts":"2026-08-18T03:50:07.530Z","seq":4,"level":"info","event":"recovered","rule":"unexpected_interstitial"}
+{"ts":"2026-08-18T03:50:07.536Z","seq":5,"level":"info","event":"step.ok","stepId":"s1","action":"navigate"}
+{"ts":"2026-08-18T03:50:07.563Z","seq":6,"level":"info","event":"step.ok","stepId":"s2","action":"type","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:07.686Z","seq":7,"level":"info","event":"step.ok","stepId":"s3","action":"click","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:07.692Z","seq":8,"level":"info","event":"output.captured","name":"savingsBalance"}
+{"ts":"2026-08-18T03:50:07.711Z","seq":9,"level":"info","event":"step.ok","stepId":"s4","action":"read"}
+{"ts":"2026-08-18T03:50:07.753Z","seq":10,"level":"info","event":"replay.finish","status":"success"}

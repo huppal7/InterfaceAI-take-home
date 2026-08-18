@@ -1,0 +1,7 @@
+{"ts":"2026-08-18T03:50:03.822Z","seq":0,"level":"info","event":"replay.start","capabilityId":"member.read_savings_balance","version":"1.0.0","params":{"memberId":"00000"}}
+{"ts":"2026-08-18T03:50:04.101Z","seq":1,"level":"info","event":"session.established","operator":"[REDACTED]"}
+{"ts":"2026-08-18T03:50:04.152Z","seq":2,"level":"info","event":"step.ok","stepId":"s1","action":"navigate"}
+{"ts":"2026-08-18T03:50:04.171Z","seq":3,"level":"info","event":"step.ok","stepId":"s2","action":"type","resolvedStrategy":0}
+{"ts":"2026-08-18T03:50:04.256Z","seq":4,"level":"info","event":"runtime_rule.fired","rule":"record_not_found","classify":"business_outcome"}
+{"ts":"2026-08-18T03:50:04.290Z","seq":5,"level":"info","event":"business_outcome","code":"NO_SUCH_MEMBER","rule":"record_not_found"}
+{"ts":"2026-08-18T03:50:04.290Z","seq":6,"level":"info","event":"replay.finish","status":"business_outcome","outcome":{"code":"NO_SUCH_MEMBER","message":"No member exists for the supplied member ID."}}

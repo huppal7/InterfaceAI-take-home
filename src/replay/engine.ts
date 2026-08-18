@@ -278,6 +278,8 @@ export async function replay(
           sTrace.status = "ok";
           sTrace.note = `business outcome: ${rule.outcomeCode}`;
           sTrace.durationMs = Date.now() - st0;
+          sTrace.screenshot = run.screenshotPath(`outcome-${rule.outcomeCode ?? rule.name}`);
+          await driver.screenshot(sTrace.screenshot);
           steps.push(sTrace);
           run.log("info", "business_outcome", { code: rule.outcomeCode, rule: rule.name });
           return finish({ status: "business_outcome", outcome: { code: rule.outcomeCode ?? rule.name, message: rule.message } });
